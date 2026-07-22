@@ -44,14 +44,23 @@ a {
   top: 0;
   z-index: 20;
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: 1fr;
   align-items: center;
-  gap: 22px;
   min-height: 80px;
   padding: 10px clamp(18px, 4vw, 44px);
   background: rgba(0, 0, 0, 0.76);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(18px);
+}
+
+.topbar-inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
 }
 
 .logo img {
@@ -1278,7 +1287,7 @@ textarea {
 }
 
 @media (max-width: 1060px) {
-  .topbar {
+  .topbar-inner {
     grid-template-columns: auto auto;
   }
 
@@ -1323,6 +1332,9 @@ textarea {
 @media (max-width: 720px) {
   .topbar {
     align-items: flex-start;
+  }
+
+  .topbar-inner {
     grid-template-columns: 1fr;
   }
 
@@ -2146,13 +2158,10 @@ body:not(.home-page) main {
 .home-page .figma-hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.56fr) minmax(420px, 0.94fr);
-  align-items: stretch;
-  gap: clamp(18px, 1.9vw, 26px);
+  grid-template-columns: 1fr;
   min-height: calc(100vh - 140px);
-  width: auto;
-  margin-inline: 0;
-  padding: 128px clamp(26px, 3.2vw, 52px) 54px 0;
+  width: 100%;
+  margin: 0 auto;
   color: #f7f3f4;
   text-align: left;
   background:
@@ -2161,6 +2170,16 @@ body:not(.home-page) main {
     radial-gradient(circle at 84% 34%, rgba(255, 75, 75, 0.52), transparent 28%),
     radial-gradient(circle at 76% 68%, rgba(97, 127, 225, 0.62), transparent 26%),
     #eeeeee;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.56fr) minmax(420px, 0.94fr);
+  align-items: stretch;
+  gap: clamp(18px, 1.9vw, 26px);
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
 }
 
 .home-page .figma-hero::after {
@@ -2325,10 +2344,13 @@ body:not(.home-page) main {
 
 @media (max-width: 1060px) {
   .modern-topbar {
-    grid-template-columns: 1fr auto auto;
     min-height: auto;
     padding: 12px 20px;
     background: rgba(255, 255, 255, 0.68);
+  }
+
+  .topbar-inner {
+    grid-template-columns: 1fr auto auto;
   }
 
   .modern-topbar .nav {
@@ -2341,10 +2363,13 @@ body:not(.home-page) main {
 
   .home-page .topbar {
     position: fixed;
-    grid-template-columns: 1fr auto auto;
     min-height: auto;
     padding: 12px 20px;
     background: rgba(255, 255, 255, 0.68);
+  }
+
+  .home-page .topbar-inner {
+    grid-template-columns: 1fr auto auto;
   }
 
   .home-page .nav {
@@ -2352,10 +2377,13 @@ body:not(.home-page) main {
   }
 
   .home-page .figma-hero {
-    grid-template-columns: 1fr;
     min-height: auto;
     width: auto;
     padding-top: 34px;
+  }
+
+  .home-page .hero-inner {
+    grid-template-columns: 1fr;
   }
 
   .hero-main-card {
@@ -2368,7 +2396,7 @@ body:not(.home-page) main {
 }
 
 @media (max-width: 720px) {
-  .modern-topbar {
+  .topbar-inner {
     grid-template-columns: 1fr;
   }
 
@@ -2382,7 +2410,7 @@ body:not(.home-page) main {
     width: 150px;
   }
 
-  .home-page .topbar {
+  .home-page .topbar-inner {
     grid-template-columns: 1fr;
   }
 
@@ -2397,9 +2425,12 @@ body:not(.home-page) main {
   }
 
   .home-page .figma-hero {
-    gap: 18px;
     width: auto;
     padding: 20px 16px 42px;
+  }
+
+  .home-page .hero-inner {
+    gap: 18px;
   }
 
   .hero-main-card {
